@@ -28,7 +28,7 @@ export const sendDonationNotification = action({
     try {
       const { data, error } = await resend.emails.send({
         from: "onboarding@resend.dev",
-        to: ["finlay.hlannon@smus.ca", "roypark.victoria@gmail.com"],
+        to: ["roypark.victoria@gmail.com"],
         subject: `New Donation Request - ${args.deviceType} from ${args.donorName}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
