@@ -23,6 +23,23 @@ const applicationTables = {
     additionalInfo: v.optional(v.string()),
     status: v.string(), // "pending", "scheduled", "completed"
   }),
+
+  requests: defineTable({
+    name: v.string(),
+    email: v.string(),
+    phone: v.string(),
+    deviceType: v.string(),
+    deviceCondition: v.string(),
+    quantity: v.number(),
+    address: v.optional(v.string()),
+    city: v.optional(v.string()),
+    zipCode: v.optional(v.string()),
+    preferredDate: v.optional(v.string()),
+    preferredTime: v.optional(v.string()),
+    additionalInfo: v.optional(v.string()),
+    requestType: v.string(), // "pickup" or "dropoff"
+    dropoffLocation: v.optional(v.string()),
+  }),
   
   contacts: defineTable({
     name: v.string(),

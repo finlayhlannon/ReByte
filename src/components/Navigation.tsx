@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type Page = "home" | "donate" | "about" | "contact";
+type Page = "home" | "donate" | "request" | "about" | "contact";
 
 interface NavigationProps {
   currentPage: Page | "admin";
@@ -13,6 +13,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   const navItems = [
     { id: "home" as Page, label: "Home" },
     { id: "donate" as Page, label: "Donate" },
+    { id: "request" as Page, label: "Request"},
     { id: "about" as Page, label: "About" },
     { id: "contact" as Page, label: "Contact" },
   ];

@@ -1,10 +1,10 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
-import { sendDonationNotification } from "./notifications";
 
-export const submitDonation = mutation({
+// Mutation to submit a new device request
+export const submitRequest = mutation({
   args: {
-    type: v.union(v.literal("pickup"), v.literal("dropoff")),
+    requestType: v.union(v.literal("dropoff"), v.literal("pickup")),
     name: v.string(),
     email: v.string(),
     phone: v.string(),
@@ -20,21 +20,21 @@ export const submitDonation = mutation({
     additionalInfo: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    const donationId = await ctx.db.insert("donations", {
+    // Always insert all fields, even if empty string or null
+    const requestId = await ctx.db.insert("requests", {
       ...args,
-      status: "pending",
     });
 
-    // Note: Email notifications will be sent automatically
-    // You can set up email notifications in the Convex dashboard
+    // You can add notifications or logging here if needed
 
-    return donationId;
+    return requestId;
   },
 });
 
-export const getDonations = query({
+// Query to get all requests, most recent first
+export const getRequests = query({
   args: {},
   handler: async (ctx) => {
-    return await ctx.db.query("donations").order("desc").collect();
+    return await ctx.db.query("requests").order("desc").collect();
   },
 });

@@ -3,13 +3,13 @@ import { useMutation, useAction } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { toast } from "sonner";
 
-type DonationType = "pickup" | "dropoff";
+type RequestType = "dropoff" | "pickup"; 
 
-export function DonationPage() {
-  const [donationType, setDonationType] = useState<DonationType>("pickup");
+export function RequestPage() {
+  const [requestType, setRequestType] = useState<RequestType>("dropoff");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const submitDonation = useMutation(api.donations.submitDonation);
-  const sendDonationNotification = useAction(api.notifications.sendDonationNotification);
+  const submitRequest = useMutation(api.requests.submitRequest);
+  const sendRequestNotification = useAction(api.notifications.sendRequestNotification);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -32,46 +32,44 @@ export function DonationPage() {
     setIsSubmitting(true);
 
     try {
-      // Submit the donation and get the donationId
-      const donationId = await submitDonation({
-        type: donationType,
+      // Submit request and get the requestId
+      const requestId = await submitRequest({
+        requestType,
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         deviceType: formData.deviceType,
         deviceCondition: formData.deviceCondition,
         quantity: formData.quantity,
-        address: donationType === "pickup" ? formData.address : "",
-        city: donationType === "pickup" ? formData.city : "",
-        zipCode: donationType === "pickup" ? formData.zipCode : "",
-        preferredDate: donationType === "pickup" ? formData.preferredDate : "",
-        preferredTime: donationType === "pickup" ? formData.preferredTime : "",
-        dropoffLocation: donationType === "dropoff" ? formData.dropoffLocation : "",
+        address: requestType === "dropoff" ? formData.address : "",
+        city: requestType === "dropoff" ? formData.city : "",
+        zipCode: requestType === "dropoff" ? formData.zipCode : "",
+        preferredDate: requestType === "dropoff" ? formData.preferredDate : "",
+        preferredTime: requestType === "dropoff" ? formData.preferredTime : "",
+        dropoffLocation: requestType === "pickup" ? formData.dropoffLocation : "",
         additionalInfo: formData.additionalInfo,
       });
 
-      // Send the notification email
-      await sendDonationNotification({
-        donationId,
-        donorName: formData.name,
-        donorEmail: formData.email,
+      // Send notification email
+      await sendRequestNotification({
+        requestId,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
         deviceType: formData.deviceType,
         deviceCondition: formData.deviceCondition,
         quantity: formData.quantity,
-        type: donationType,
-        address: donationType === "pickup" ? formData.address : "",
-        city: donationType === "pickup" ? formData.city : "",
-        zipCode: donationType === "pickup" ? formData.zipCode : "",
-        preferredDate: donationType === "pickup" ? formData.preferredDate : "",
-        preferredTime: donationType === "pickup" ? formData.preferredTime : "",
-        dropoffLocation: donationType === "dropoff" ? formData.dropoffLocation : "",
+        requestType,
+        address: requestType === "dropoff" ? formData.address : "",
+        city: requestType === "dropoff" ? formData.city : "",
+        zipCode: requestType === "dropoff" ? formData.zipCode : "",
+        preferredDate: requestType === "dropoff" ? formData.preferredDate : "",
+        preferredTime: requestType === "dropoff" ? formData.preferredTime : "",
+        dropoffLocation: requestType === "pickup" ? formData.dropoffLocation : "",
         additionalInfo: formData.additionalInfo,
-        phone: formData.phone,
       });
 
-      toast.success("Donation request submitted successfully! We'll contact you soon.");
-
-      // Reset form
+      toast.success("Device request submitted successfully! We'll contact you soon.");
       setFormData({
         name: "",
         email: "",
@@ -88,7 +86,7 @@ export function DonationPage() {
         additionalInfo: "",
       });
     } catch (error) {
-      toast.error("Failed to submit donation request. Please try again.");
+      toast.error("Failed to submit device request. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -103,60 +101,60 @@ export function DonationPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Donate Your Device
+            Request a Device
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Choose how you'd like to donate your computer or laptop. We make it easy with both pickup and drop-off options.
+            Fill out the form below to request a computer or laptop. We offer both drop-off and pick up options.
           </p>
         </div>
 
-        {/* Donation Type Toggle */}
+        {/* Request Type Toggle */}
         <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
           <div className="flex justify-center mb-6">
             <div className="bg-gray-100 p-1 rounded-lg">
               <button
-                onClick={() => setDonationType("pickup")}
+                onClick={() => setRequestType("dropoff")}
                 className={`px-6 py-3 rounded-md font-medium transition-all ${
-                  donationType === "pickup"
+                  requestType === "dropoff"
                     ? "bg-emerald-600 text-white shadow-sm"
                     : "text-gray-700 hover:text-emerald-600"
                 }`}
               >
-                Schedule Pickup
+                Schedule Drop Off
               </button>
               <button
-                onClick={() => setDonationType("dropoff")}
+                onClick={() => setRequestType("pickup")}
                 className={`px-6 py-3 rounded-md font-medium transition-all ${
-                  donationType === "dropoff"
+                  requestType === "pickup"
                     ? "bg-emerald-600 text-white shadow-sm"
                     : "text-gray-700 hover:text-emerald-600"
                 }`}
               >
-                Drop Off
+                Pick Up
               </button>
             </div>
           </div>
 
           <div className="text-center">
-            {donationType === "pickup" ? (
+            {requestType === "dropoff" ? (
               <div className="bg-emerald-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-emerald-800 mb-2">Free Pickup Service</h3>
+                <h3 className="font-semibold text-emerald-800 mb-2">Free Drop Off Service</h3>
                 <p className="text-emerald-700">
-                  We'll come to your location to collect your devices at no cost to you.
+                  We'll deliver your requested device to your location at no cost to you.
                 </p>
               </div>
             ) : (
               <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-800 mb-2">Drop-Off Locations</h3>
+                <h3 className="font-semibold text-blue-800 mb-2">Pick Up Locations</h3>
                 <p className="text-blue-700">
-                  Bring your devices to one of our convenient drop-off locations.
+                  Pick up your device at one of our convenient locations.
                 </p>
               </div>
             )}
           </div>
         </div>
 
-        {/* Donation Form */}
+        {/* Request Form */}
         <div className="bg-white rounded-xl shadow-sm p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Personal Information */}
@@ -261,9 +259,9 @@ export function DonationPage() {
             </div>
 
             {/* Pickup/Dropoff Specific Fields */}
-            {donationType === "pickup" ? (
+            {requestType === "dropoff" ? (
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Pickup Details</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Drop Off Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -334,7 +332,7 @@ export function DonationPage() {
               </div>
             ) : (
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Drop-off Location</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Pick Up Location</h3>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Preferred Location *
@@ -345,7 +343,7 @@ export function DonationPage() {
                     onChange={(e) => updateFormData("dropoffLocation", e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   >
-                    <option value="">Select drop-off location</option>
+                    <option value="">Select pick up location</option>
                     <option value="main-office">Main Office - 123 Tech Street</option>
                     <option value="community-center">Community Center - 456 Helper Ave</option>
                     <option value="library">Public Library - 789 Knowledge Blvd</option>
@@ -364,7 +362,7 @@ export function DonationPage() {
                 onChange={(e) => updateFormData("additionalInfo", e.target.value)}
                 rows={4}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
-                placeholder="Any additional details about your devices or special instructions..."
+                placeholder="Any additional details about your request or special instructions..."
               />
             </div>
 
@@ -375,7 +373,7 @@ export function DonationPage() {
                 disabled={isSubmitting}
                 className="w-full bg-emerald-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105"
               >
-                {isSubmitting ? "Submitting..." : "Submit Donation Request"}
+                {isSubmitting ? "Submitting..." : "Submit Device Request"}
               </button>
             </div>
           </form>

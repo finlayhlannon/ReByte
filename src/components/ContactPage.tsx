@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useMutation } from "convex/react";
+import { useMutation, useAction } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { toast } from "sonner";
 
 export function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const submitContact = useMutation(api.contacts.submitContact);
+  const sendContactNotification = useAction(api.notifications.sendContactNotification);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -18,15 +19,23 @@ export function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      await submitContact({
+      // Submit contact form and get the contactId
+      const contactId = await submitContact({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      });
+
+      // Send notification email
+      await sendContactNotification({
+        contactId,
         name: formData.name,
         email: formData.email,
         message: formData.message,
       });
 
       toast.success("Message sent successfully! We'll get back to you soon.");
-      
-      // Reset form
+
       setFormData({
         name: "",
         email: "",

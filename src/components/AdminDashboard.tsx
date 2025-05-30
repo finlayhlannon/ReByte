@@ -4,9 +4,11 @@ import { api } from "../../convex/_generated/api";
 export function AdminDashboard() {
   const donations = useQuery(api.donations.getDonations);
   const contacts = useQuery(api.contacts.getContacts);
+  const requests = useQuery(api.requests.getRequests); // <-- Add this line
 
   const recentDonations = donations?.slice(0, 5) || [];
   const recentContacts = contacts?.slice(0, 5) || [];
+  const recentRequests = requests?.slice(0, 5) || []; // <-- Add this line
 
   const handleBackToHome = () => {
     window.history.pushState({}, "", "/");
@@ -29,7 +31,7 @@ export function AdminDashboard() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Recent Donations */}
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-6">
@@ -38,7 +40,6 @@ export function AdminDashboard() {
                 {donations?.length || 0} total
               </span>
             </div>
-            
             <div className="space-y-4">
               {recentDonations.length === 0 ? (
                 <p className="text-gray-500 text-center py-8">No donations yet</p>
@@ -75,6 +76,60 @@ export function AdminDashboard() {
             </div>
           </div>
 
+          {/* Recent Requests */}
+          <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-gray-900">Recent Device Requests</h2>
+              <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
+                {requests?.length || 0} total
+              </span>
+            </div>
+            <div className="space-y-4">
+              {recentRequests.length === 0 ? (
+                <p className="text-gray-500 text-center py-8">No requests yet</p>
+              ) : (
+                recentRequests.map((request) => (
+                  <div key={request._id} className="border border-gray-200 rounded-lg p-4">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-semibold text-gray-900">{request.name}</h3>
+                      <span className="px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                        {request.requestType === 'dropoff' ? 'Drop Off (We Deliver)' : 'Pick Up (They Come)'}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Device:</strong> {request.deviceType} ({request.quantity}x)
+                    </p>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Contact:</strong> {request.email} | {request.phone}
+                    </p>
+                    {request.requestType === "dropoff" ? (
+                      <>
+                        <p className="text-sm text-gray-600 mb-2">
+                          <strong>Address:</strong> {request.address}, {request.city}, {request.zipCode}
+                        </p>
+                        <p className="text-sm text-gray-600 mb-2">
+                          <strong>Preferred:</strong> {request.preferredDate} {request.preferredTime}
+                        </p>
+                      </>
+                    ) : (
+                      <p className="text-sm text-gray-600 mb-2">
+                        <strong>Pick Up Location:</strong> {request.dropoffLocation}
+                      </p>
+                    )}
+                    {request.additionalInfo && (
+                      <p className="text-xs text-gray-500 mt-2">
+                        <strong>Notes:</strong> {request.additionalInfo}
+                      </p>
+                    )}
+                    <p className="text-xs text-gray-400 mt-2">
+                      {new Date(request._creationTime).toLocaleString()}
+                    </p>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
           {/* Recent Contacts */}
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-6">
@@ -83,7 +138,6 @@ export function AdminDashboard() {
                 {contacts?.length || 0} total
               </span>
             </div>
-            
             <div className="space-y-4">
               {recentContacts.length === 0 ? (
                 <p className="text-gray-500 text-center py-8">No messages yet</p>
@@ -123,6 +177,10 @@ export function AdminDashboard() {
             <div className="text-sm text-gray-600">Total Donations</div>
           </div>
           <div className="bg-white rounded-lg p-6 text-center">
+            <div className="text-2xl font-bold text-purple-600">{requests?.length || 0}</div>
+            <div className="text-sm text-gray-600">Total Requests</div>
+          </div>
+          <div className="bg-white rounded-lg p-6 text-center">
             <div className="text-2xl font-bold text-blue-600">{contacts?.length || 0}</div>
             <div className="text-sm text-gray-600">Total Messages</div>
           </div>
@@ -131,12 +189,6 @@ export function AdminDashboard() {
               {donations?.filter(d => d.status === 'pending').length || 0}
             </div>
             <div className="text-sm text-gray-600">Pending Donations</div>
-          </div>
-          <div className="bg-white rounded-lg p-6 text-center">
-            <div className="text-2xl font-bold text-red-600">
-              {contacts?.filter(c => c.status === 'new').length || 0}
-            </div>
-            <div className="text-sm text-gray-600">New Messages</div>
           </div>
         </div>
       </div>

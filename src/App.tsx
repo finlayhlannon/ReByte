@@ -7,8 +7,10 @@ import { ContactPage } from "./components/ContactPage";
 import { AdminDashboard } from "./components/AdminDashboard";
 import { AdminLogin } from "./components/AdminLogin";
 import { Navigation } from "./components/Navigation";
+import { RequestPage } from "./components/RequestPage";
 
-type Page = "home" | "donate" | "about" | "contact" | "admin";
+type Page = "home" | "donate" | "request" | "about" | "contact" | "admin";
+
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>(() => {
@@ -49,22 +51,24 @@ export default function App() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case "home":
+        case "home":
         return <LandingPage onNavigate={handleNavigate} />;
-      case "donate":
+        case "donate":
         return <DonationPage />;
-      case "about":
+        case "about":
         return <AboutPage />;
-      case "contact":
+        case "contact":
         return <ContactPage />;
-      case "admin":
+        case "request":
+        return <RequestPage />;
+        case "admin":
         if (!isAdminAuthenticated) {
-          return <AdminLogin onAuthenticated={() => setIsAdminAuthenticated(true)} />;
+            return <AdminLogin onAuthenticated={() => setIsAdminAuthenticated(true)} />;
         }
         return <AdminDashboard />;
-      default:
+        default:
         return <LandingPage onNavigate={handleNavigate} />;
-    }
+    }   
   };
 
   // Don't show navigation for admin pages

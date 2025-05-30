@@ -1,4 +1,4 @@
-type Page = "home" | "donate" | "about" | "contact";
+type Page = "home" | "donate" | "request" | "about" | "contact";
 
 interface LandingPageProps {
   onNavigate: (page: Page) => void;

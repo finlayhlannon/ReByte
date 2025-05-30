@@ -17,6 +17,8 @@ import type * as auth from "../auth.js";
 import type * as contacts from "../contacts.js";
 import type * as donations from "../donations.js";
 import type * as http from "../http.js";
+import type * as notifications from "../notifications.js";
+import type * as requests from "../requests.js";
 import type * as router from "../router.js";
 
 /**
@@ -32,6 +34,8 @@ declare const fullApi: ApiFromModules<{
   contacts: typeof contacts;
   donations: typeof donations;
   http: typeof http;
+  notifications: typeof notifications;
+  requests: typeof requests;
   router: typeof router;
 }>;
 export declare const api: FilterApi<
