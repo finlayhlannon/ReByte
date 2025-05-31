@@ -8,6 +8,8 @@ import { AdminDashboard } from "./components/AdminDashboard";
 import { AdminLogin } from "./components/AdminLogin";
 import { Navigation } from "./components/Navigation";
 import { RequestPage } from "./components/RequestPage";
+import { Analytics } from "@vercel/analytics/react";
+
 
 type Page = "home" | "donate" | "request" | "about" | "contact" | "admin";
 
@@ -83,6 +85,7 @@ export default function App() {
         {renderPage()}
       </main>
       <Toaster position="top-right" />
+      <Analytics />
     </div>
   );
 }
