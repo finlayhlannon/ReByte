@@ -172,10 +172,10 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
             <div>
               <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="mailto:rebytevictoria@gmail.com" className="text-gray-400 hover:text-white transition-colors">
                   <p>Email</p>
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="tel:2508833201" className="text-gray-400 hover:text-white transition-colors">
                   <p>Phone</p>
                 </a>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
