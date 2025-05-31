@@ -86,6 +86,31 @@ export function AboutPage() {
         </div>
       </section>
 
+      {/* Organizations Helped Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Organizations Helped
+            </h2>
+            <p className="text-lg text-gray-600">
+              We proudly support local organizations by providing access to technology
+            </p>
+          </div>
+
+          <div className="flex justify-center items-center gap-12 flex-wrap">
+            <div className="w-48 h-24 flex items-center justify-center">
+              <a href='https://www.vircs.bc.ca'><img
+                src="/vircs.png"
+                alt="VIRCS Logo"
+                className="max-h-full max-w-full object-contain"
+              /></a>
+            </div>
+            {/* Add more logos here as you partner with more organizations */}
+          </div>
+        </div>
+      </section>
+
       {/* Mission & Vision */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
