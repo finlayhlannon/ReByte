@@ -28,7 +28,7 @@ export const sendDonationNotification = action({
     try {
       const { data, error } = await resend.emails.send({
         from: "onboarding@resend.dev",
-        to: ["roypark.victoria@gmail.com"],
+        to: ["finlay.hlannon@smus.ca"],
         subject: `New Donation Request - ${args.deviceType} from ${args.donorName}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -91,7 +91,7 @@ export const sendContactNotification = action({
     try {
       const { data, error } = await resend.emails.send({
         from: "onboarding@resend.dev",
-        to: ["roypark.victoria@gmail.com"],
+        to: ["finlay.hlannon@smus.ca"],
         subject: `New Contact Message from ${args.name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -160,7 +160,7 @@ export const sendRequestNotification = action({
     try {
       const { data, error } = await resend.emails.send({
         from: "onboarding@resend.dev",
-        to: ["roypark.victoria@gmail.com"],
+        to: ["finlay.hlannon@smus.ca"],
         subject: `New Device Request from ${args.name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
