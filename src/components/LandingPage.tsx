@@ -175,9 +175,11 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
                 <a href="mailto:rebytevictoria@gmail.com" className="text-gray-400 hover:text-white transition-colors">
                   <p>Email</p>
                 </a>
+                {/*
                 <a href="tel:2508833201" className="text-gray-400 hover:text-white transition-colors">
                   <p>Phone</p>
                 </a>
+                */}
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <p></p>
                 </a>
