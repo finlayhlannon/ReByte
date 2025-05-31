@@ -32,7 +32,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               alt="ReByte Logo" 
               className="w-8 h-8 mr-3 object-contain"
             />
-            <span className="text-xl font-bold text-gray-900">ReByte</span>
+            <span className="text-xl font-bold text-gray-900">ReByte Victoria</span>
           </div>
 
           {/* Desktop Navigation */}

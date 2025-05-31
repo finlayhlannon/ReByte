@@ -60,7 +60,7 @@ export function ContactPage() {
             Contact Us
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Have questions about donating, volunteering, or our mission? We'd love to hear from you.
+            Have questions about donating, requesting, or our mission? We'd love to hear from you.
           </p>
         </div>
 
@@ -136,8 +136,7 @@ export function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Email</h4>
-                    <p className="text-gray-600">info@rebyte.org</p>
-                    <p className="text-gray-600">donations@rebyte.org</p>
+                    <p className="text-gray-600">ReByteVictoria@gmail.com</p>
                   </div>
                 </div>
 
@@ -149,11 +148,11 @@ export function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Phone</h4>
-                    <p className="text-gray-600">(555) 123-4567</p>
-                    <p className="text-sm text-gray-500">Mon-Fri, 9 AM - 5 PM</p>
+                    <p className="text-gray-600">(250) 883-3201</p>
+                    <p className="text-sm text-gray-500">Mon-Fri, 9 AM - 4 PM</p>
                   </div>
                 </div>
-
+                {/* 
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                     <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,6 +160,7 @@ export function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
+                  
                   <div>
                     <h4 className="font-semibold text-gray-900">Address</h4>
                     <p className="text-gray-600">123 Tech Street</p>
@@ -168,15 +168,16 @@ export function ContactPage() {
                     <p className="text-gray-600">San Francisco, CA 94105</p>
                   </div>
                 </div>
+                */}
               </div>
             </div>
 
             <div className="bg-emerald-50 rounded-xl p-8">
-              <h3 className="text-xl font-bold text-emerald-800 mb-4">Office Hours</h3>
+              <h3 className="text-xl font-bold text-emerald-800 mb-4">Hours</h3>
               <div className="space-y-2 text-emerald-700">
                 <div className="flex justify-between">
                   <span>Monday - Friday</span>
-                  <span>9:00 AM - 5:00 PM</span>
+                  <span>9:00 AM - 4:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Saturday</span>
@@ -195,7 +196,7 @@ export function ContactPage() {
                 Need immediate assistance? We typically respond to messages within 24 hours during business days.
               </p>
               <p className="text-blue-700">
-                For urgent donation pickups, please call us directly at (555) 123-4567.
+                For urgent issues, please call us directly at (250) 883-3201.
               </p>
             </div>
           </div>

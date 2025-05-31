@@ -346,9 +346,9 @@ export function DonationPage() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   >
                     <option value="">Select drop-off location</option>
-                    <option value="main-office">Main Office - 123 Tech Street</option>
-                    <option value="community-center">Community Center - 456 Helper Ave</option>
-                    <option value="library">Public Library - 789 Knowledge Blvd</option>
+                    <option value="hillside-mall">1644 Hillside Ave, Victoria, BC</option>
+                    <option value="shelbourne-plaza">3601 Shelbourne St, Victoria, BC</option>
+                    <option value="smus">3400 Richmond Rd, Victoria, BC</option>
                   </select>
                 </div>
               </div>

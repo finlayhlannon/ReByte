@@ -21,7 +21,7 @@ export function AboutPage() {
             
             <div className="space-y-6 text-gray-700 leading-relaxed">
               <p>
-                ReByte was founded in 2022 with a simple yet powerful vision: to bridge the digital divide by connecting unused technology with those who need it most. What started as a small community initiative has grown into a thriving nonprofit organization that has transformed hundreds of lives through technology access.
+                ReByte was started in 2025 with a simple yet powerful vision: to bridge the digital divide by connecting unused technology with those who need it most. We are starting as a small community initiative with goals to grow into a thriving nonprofit organization that transforms hundreds of lives through technology access.
               </p>
               
               <p>
@@ -29,11 +29,11 @@ export function AboutPage() {
               </p>
               
               <p>
-                Today, ReByte operates with a dedicated team of volunteers who are passionate about technology and social impact. Our skilled technicians carefully refurbish every donated device, ensuring it meets high standards before redistribution. We partner with local schools, community organizations, and social services to identify families and individuals who would benefit most from our program.
+                Today, ReByte operates with a small but dedicated team of students who are passionate about technology and social impact. We partner with local community organizations and social services to identify families and individuals who would benefit most from our program.
               </p>
               
               <p>
-                Every device we redistribute comes with basic software, educational resources, and ongoing support to ensure recipients can make the most of their new technology. We believe that providing a computer is just the first step – true digital inclusion requires ongoing support and education.
+                Every device we redistribute comes preinstalled with software to ensure recipients can make the most of their new technology. We believe that access to technology is not a luxury, but a necessity—and through every donation, we aim to create opportunities, bridge gaps, and empower communities.
               </p>
             </div>
           </div>
@@ -60,7 +60,7 @@ export function AboutPage() {
                 </svg>
               </div>
               <h3 className="text-3xl font-bold text-emerald-600 mb-2">$19,000+</h3>
-              <p className="text-gray-700 font-medium">Worth of Computers Donated</p>
+              <p className="text-gray-700 font-medium">Worth of Computer Gear Donated</p>
             </div>
             
             <div className="text-center p-8 bg-blue-50 rounded-xl">
@@ -69,8 +69,8 @@ export function AboutPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-3xl font-bold text-blue-600 mb-2">150+</h3>
-              <p className="text-gray-700 font-medium">Families Helped</p>
+              <h3 className="text-3xl font-bold text-blue-600 mb-2">70+</h3>
+              <p className="text-gray-700 font-medium">People Helped</p>
             </div>
             
             <div className="text-center p-8 bg-purple-50 rounded-xl">
@@ -79,7 +79,7 @@ export function AboutPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <h3 className="text-3xl font-bold text-purple-600 mb-2">95%</h3>
+              <h3 className="text-3xl font-bold text-purple-600 mb-2">100%</h3>
               <p className="text-gray-700 font-medium">Devices Successfully Refurbished</p>
             </div>
           </div>
@@ -162,14 +162,11 @@ export function AboutPage() {
             Join Our Mission
           </h2>
           <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
-            Whether you have a device to donate, want to volunteer, or need technology access, we're here to help bridge the digital divide together.
+            Whether you have a device to donate, or need technology access, we're here to help bridge the digital divide together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-emerald-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
               Donate a Device
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-emerald-600 transition-all duration-300">
-              Volunteer With Us
             </button>
           </div>
         </div>
